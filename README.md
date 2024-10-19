@@ -16,51 +16,78 @@ This project implements a client-server architecture to find the shortest path i
 - C++ compiler supporting C++11 or later.
 - Unix-like environment (Linux, macOS).
 
-## Usage
+Sure! Here’s a section of the `README.md` that specifically explains how to run the entire project, including details about the `data_adjacency_table.csv` file:
 
-### Server
+```markdown
+## Running the Project
 
-To run the server, navigate to the server directory and compile the source code using a C++ compiler. Then, execute the compiled binary with the following command:
-./server <filename> <port>
+To run the entire project, follow these steps:
 
+### Step 1: Prepare the Data File
+Ensure that you have the `data_adjacency_table.csv` file in the project directory. This file should contain the adjacency list representation of the graph. The format of the CSV file should look like this:
 
+```
+node1,node2
+node2,node3
+node1,node3
+...
+```
 
-Where:
-- `<filename>` is the path to the file containing the graph data.
-- `<port>` is the port number on which the server will listen for client connections.
+Each line represents an edge between two nodes in the graph. Ensure there are no extra spaces or formatting issues in the file.
 
-### Client
+### Step 2: Compile the Code
+Open your terminal, navigate to the project directory, and compile the server and client code using the following commands:
 
-To run the client, navigate to the client directory and compile the source code using a C++ compiler. Then, execute the compiled binary with the following command:
-./client <serverIP> <port> <start> <end>
+```bash
+g++ -o server server.cpp -lpthread
+g++ -o client client.cpp
+```
 
+### Step 3: Start the Server
+Run the server by specifying the CSV filename and the desired port number. In this example, we will use port `4444`:
 
+```bash
+./server data_adjacency_table.csv 4444
+```
 
+This command will read the graph from `data_adjacency_table.csv` and start the server, listening for client requests.
 
-Where:
-- `<serverIP>` is the IP address of the server.
-- `<port>` is the port number on which the server is listening.
-- `<start>` is the starting node of the shortest path.
-- `<end>` is the ending node of the shortest path.
+### Step 4: Run the Client
+In a separate terminal window, run the client to request the shortest path between two nodes. Specify the server's IP address (for localhost, use `127.0.0.1`), the port number used by the server, and the start and end nodes. For example:
 
-## Example
+```bash
+./client 127.0.0.1 4444 1 5
+```
 
-1. Start the server:
-cd server
-g++ -std=c++11 server.cpp -o server
-./server graph.txt 8080
+This command will send a request to the server to find the shortest path from node `1` to node `5`. The server will process the request and return the path (if found) to the client, which will then display it in the terminal.
 
+### Example Workflow
+1. **Prepare the `data_adjacency_table.csv`:**
+   ```
+   1,2
+   2,3
+   3,4
+   4,5
+   1,5
+   ```
 
+2. **Start the server:**
+   ```bash
+   ./server data_adjacency_table.csv 4444
+   ```
 
+3. **Run the client to find a path:**
+   ```bash
+   ./client 127.0.0.1 4444 1 5
+   ```
 
-2. In another terminal window, run the client:
-cd client
-g++ -std=c++11 client.cpp -o client
-./client 127.0.0.1 8080 1 5
+This will initiate the server and allow clients to query for paths in the graph as specified in the CSV file.
+```
 
-
-
-This will send a request to the server to find the shortest path between nodes 1 and 5 in the graph.
+### Notes
+- Adjust the instructions according to the actual structure of your `data_adjacency_table.csv` if necessary.
+- This section guides users step-by-step through preparing the data file, compiling the code, starting the server, and running the client to test the functionality.
+- Feel free to customize any part of this section based on your project’s requirements! Let me know if you want any changes or additional details.
 
 ## License
 
