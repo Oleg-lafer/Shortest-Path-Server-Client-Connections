@@ -1,6 +1,4 @@
-//Daniel Dahan 318840196
-//Oleg Muraviov 321163446
-//Ronen Yakoubov 207688581 
+
 #include <iostream>
 #include <fstream>
 #include <vector>
