@@ -16,7 +16,6 @@ This project implements a client-server architecture to find the shortest path i
 - C++ compiler supporting C++11 or later.
 - Unix-like environment (Linux, macOS).
 
-Sure! Here’s a section of the `README.md` that specifically explains how to run the entire project, including details about the `data_adjacency_table.csv` file:
 
 ```markdown
 ## Running the Project
